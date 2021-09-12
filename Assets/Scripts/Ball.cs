@@ -13,7 +13,6 @@ public class Ball : MonoBehaviour
     private Paddle paddle2;
     public Text paddle1Score;
     public Text paddle2Score;
-    public bool scored = false;
     public Vector2 originalPosition;
     private Rigidbody2D rigidBody;
 

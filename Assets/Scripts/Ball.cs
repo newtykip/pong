@@ -42,16 +42,27 @@ public class Ball : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision) {
         // Increment score
         switch (collision.gameObject.tag) {
-            case "Paddle1Side":
+            case "Paddle1Border":
                 paddle2.score++;
                 paddle2Score.text = paddle2.score.ToString();
                 OnScored();
                 break;
 
-            case "Paddle2Side":
+            case "Paddle2Border":
                 paddle1.score++;
                 paddle1Score.text = paddle1.score.ToString();
                 OnScored();
+                break;
+
+            case "PaddleSegment":
+                switch (collision.gameObject.name) {
+                    case "Top":
+                        rigidBody.AddForce(new Vector2(0.0f, 1.0f), ForceMode2D.Impulse);
+                        break;
+                    case "Bottom":
+                        rigidBody.AddForce(new Vector2(0.0f, -1.0f), ForceMode2D.Impulse);
+                        break;
+                }
                 break;
         }
     }

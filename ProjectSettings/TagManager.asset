@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Paddle1Side
   - Paddle2Side
+  - Paddle1Border
+  - Paddle2Border
+  - PaddleSegment
   layers:
   - Default
   - TransparentFX

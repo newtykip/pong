@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c19f04fb2b8059b4296e6bfc0bcf6943
+guid: 63381d5b36866bf48863e113cf9a8512
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Neutra Text
+  - pxlxxl
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

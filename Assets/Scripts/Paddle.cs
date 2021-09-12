@@ -27,12 +27,10 @@ public class Paddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!ball.scored) {
-            // Paddle 1 controls
-            paddle1.transform.Translate(new Vector3(0f, Input.GetAxis("Paddle1") * Time.deltaTime * speed));
+        // Paddle 1 controls
+        paddle1.transform.Translate(new Vector3(0f, Input.GetAxis("Paddle1") * Time.deltaTime * speed));
 
-            // Padle 2 controls
-            paddle2.transform.Translate(new Vector3(0f, Input.GetAxis("Paddle2") * Time.deltaTime * speed));
-        }
+        // Padle 2 controls
+        paddle2.transform.Translate(new Vector3(0f, Input.GetAxis("Paddle2") * Time.deltaTime * speed));
     }
 }

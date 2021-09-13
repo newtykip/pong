@@ -9,6 +9,7 @@ TagManager:
   - Paddle1Border
   - Paddle2Border
   - PaddleSegment
+  - Border
   layers:
   - Default
   - TransparentFX

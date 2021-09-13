@@ -39,19 +39,33 @@ public class Ball : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-		// Increment score
 		switch (collision.gameObject.tag)
 		{
-			case "Paddle1Border":
-				paddle2.score++;
-				paddle2Score.text = paddle2.score.ToString();
-				OnScored();
-				break;
+			case "Border":
+				switch (collision.gameObject.name)
+				{
+					// Increment score on the side borders
+					case "Left":
+						paddle2.score++;
+						paddle2Score.text = paddle2.score.ToString();
+						OnScored();
+						break;
 
-			case "Paddle2Border":
-				paddle1.score++;
-				paddle1Score.text = paddle1.score.ToString();
-				OnScored();
+					case "Right":
+						paddle1.score++;
+						paddle1Score.text = paddle1.score.ToString();
+						OnScored();
+						break;
+
+					// Apply physics on the top and bottom borders
+					case "Top":
+						rigidBody.AddForce(new Vector2(0.0f, -1.0f), ForceMode2D.Impulse);
+						break;
+
+					case "Bottom":
+						rigidBody.AddForce(new Vector2(0.0f, 1.0f), ForceMode2D.Impulse);
+						break;
+				}
 				break;
 
 			case "PaddleSegment":
@@ -65,7 +79,7 @@ public class Ball : MonoBehaviour
 						break;
 				}
 
-				// Increment the speed regardless
+				// Increment the speed regardless of which segment it hits
 				speed += 0.25f;
 				rigidBody.velocity = new Vector2((rigidBody.velocity.x > 0 ? 1.0f : -1.0f) * speed, rigidBody.velocity.y);
 

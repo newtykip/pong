@@ -14,6 +14,7 @@ public class Ball : MonoBehaviour
 	public Text paddle2Score;
 	public Vector2 originalPosition;
 	private Rigidbody2D rigidBody;
+	private List<float> directions = new List<float> { -1.5f, 1.5f };
 
 	// Start is called before the first frame update
 	void Start()
@@ -59,11 +60,11 @@ public class Ball : MonoBehaviour
 
 					// Apply physics on the top and bottom borders
 					case "Top":
-						rigidBody.AddForce(new Vector2(0.0f, -1.0f), ForceMode2D.Impulse);
+						rigidBody.AddForce(new Vector2(0.0f, directions[0]), ForceMode2D.Impulse);
 						break;
 
 					case "Bottom":
-						rigidBody.AddForce(new Vector2(0.0f, 1.0f), ForceMode2D.Impulse);
+						rigidBody.AddForce(new Vector2(0.0f, directions[1]), ForceMode2D.Impulse);
 						break;
 				}
 				break;
@@ -72,16 +73,16 @@ public class Ball : MonoBehaviour
 				switch (collision.gameObject.name)
 				{
 					case "Top":
-						rigidBody.AddForce(new Vector2(0.0f, 1.0f), ForceMode2D.Impulse);
+						rigidBody.AddForce(new Vector2(0.0f, directions[1]), ForceMode2D.Impulse);
 						break;
 					case "Bottom":
-						rigidBody.AddForce(new Vector2(0.0f, -1.0f), ForceMode2D.Impulse);
+						rigidBody.AddForce(new Vector2(0.0f, directions[0]), ForceMode2D.Impulse);
 						break;
 				}
 
 				// Increment the speed regardless of which segment it hits
-				speed += 0.25f;
-				rigidBody.velocity = new Vector2((rigidBody.velocity.x > 0 ? 1.0f : -1.0f) * speed, rigidBody.velocity.y);
+				speed += 0.2f;
+				rigidBody.velocity = new Vector2((rigidBody.velocity.x > 0 ? directions[1] : directions[0]) * speed, rigidBody.velocity.y);
 
 				break;
 		}
@@ -104,9 +105,8 @@ public class Ball : MonoBehaviour
 	void ApplyForce()
 	{
 		System.Random random = new System.Random();
-		List<float> directions = new List<float> { -1.0f, 1.0f };
 		int index = random.Next(directions.Count);
 
-		rigidBody.AddForce(new Vector2(directions[index], UnityEngine.Random.Range(-1.0f, 1.0f)) * speed, ForceMode2D.Impulse);
+		rigidBody.AddForce(new Vector2(directions[index], UnityEngine.Random.Range(directions[0], directions[1])) * speed, ForceMode2D.Impulse);
 	}
 }

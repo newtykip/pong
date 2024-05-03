@@ -23,3 +23,5 @@ A simple pong port in Unity. This is my first project, so expect bugs and a lot 
 #### Global
 
 **ESC** - Quit the game!
+
+<sub>this project uses the <a href="license.md">opinionated queer license v1.1</a> - tl;dr see <a href="https://oql.avris.it/license.tldr">here</a> :]</sub>
